@@ -1,0 +1,18 @@
+version: '3.1'
+services:
+  # https://hub.docker.com/_/mongo
+  civalue_mongo:
+    image: library/mongo:4.2
+    container_name: civalue_mongo
+    restart: always
+    ports:
+      - "27142:27017"
+    volumes:
+      - civalue_mongo_local:/data/db
+
+volumes:
+  civalue_mongo_local:
+
+networks:
+  default:
+    name: civalue-dockers-network    
