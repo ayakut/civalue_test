@@ -56,6 +56,8 @@ public class PersonalizedList implements IAnyDocument{
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @Data
     public static class Personalization{
+        public static final String PRODUCT_ID_FIELD = "productId";
+        
         private String productId;
         private Double relevancyScore;
     }

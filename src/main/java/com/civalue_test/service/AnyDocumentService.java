@@ -11,12 +11,11 @@ import org.springframework.stereotype.Service;
 import com.civalue_test.model.IAnyDocument;
 
 @Service
-public abstract class AnyDocumentService {
-    private final MongoTemplate mongoTemplate;
+public abstract class AnyDocumentService extends AnyService{
 
     @Autowired
     public AnyDocumentService(MongoTemplate mongoTemplate) {
-        this.mongoTemplate = mongoTemplate;
+        super(mongoTemplate);
     }
 
     public void upsertDocument(IAnyDocument document, Class<?> documentClass) throws Exception{
@@ -26,7 +25,7 @@ public abstract class AnyDocumentService {
         for (String field : document.getAllFields()) {
             update.set(field, document.getFieldValue(field));
         }
-        this.mongoTemplate.findAndModify(
+        this.getTemplate().findAndModify(
             new Query(Criteria.where(document.getIdField()).is(document.getFieldValue(document.getIdField()))), 
             update, 
             new FindAndModifyOptions().upsert(true), 

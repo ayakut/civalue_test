@@ -1,5 +1,20 @@
 version: '3.1'
 services:
+  # civalue_api:
+  #     restart: on-failure
+  #     container_name: 'civalue_api'
+  #     image: civalue_api_java_8
+  #     build:
+  #       context: '.'
+  #       dockerfile: ./docker/app.dockerfile
+  #     depends_on:
+  #       - civalue_mongo
+
+  #     volumes:
+  #       - '.:/opt/project'
+  #     ports:
+  #       - 3001:3000
+        
   # https://hub.docker.com/_/mongo
   civalue_mongo:
     image: library/mongo:4.2

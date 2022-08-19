@@ -10,10 +10,8 @@ logs
 scripts
 deployment
 */*.dockerfile
-src/client
 src/test
 src/main/resources
-src/common/test
-src/common/target
 /settings/
 target
+docker-compose*
